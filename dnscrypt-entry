@@ -1,6 +1,8 @@
 #!/bin/ash
 # DNScrypt-Proxy Entry File
 
+echo $(date) - Starting DNScrypt-Proxy
+
 if [ ! -e /data/dnscrypt-proxy.toml ]; then
     cp /etc/dnscrypt-proxy/dnscrypt-proxy.toml /data/dnscrypt-proxy.toml
 fi
