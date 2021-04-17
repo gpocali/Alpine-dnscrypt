@@ -5,7 +5,13 @@ if [ ! -e /data/dnscrypt-proxy.toml ]; then
     cp /etc/dnscrypt-proxy/dnscrypt-proxy.toml /data/dnscrypt-proxy.toml
 fi
 
-/usr/bin/dnscrypt-proxy -config /data/dnscrypt-proxy.toml -check && echo Configuration check successful. || echo Configuration check failed. Startup aborted. && exit 1
+/usr/bin/dnscrypt-proxy -config /data/dnscrypt-proxy.toml -check
+if [ $? -eq 0 ]; then
+    echo Configuration check successful.
+else
+    echo Configuration check failed. Startup aborted.
+    exit 1
+fi
 
 /usr/bin/dnscrypt-proxy -config /data/dnscrypt-proxy.toml
 
